@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"syscall/js"
+	"net/http"
 )
 
 var headers js.Value
@@ -23,6 +24,10 @@ func main() {
 
 func request(args []js.Value) {
 	res := args[1]
+	
+	http.Get("https://api.github.com", resp *http.Response, err error)
+	resp.Status()
+	
 	res.Call("writeHead", 200, headers)
 	res.Call("write", "Hello World")
 	res.Call("end", "\n")
